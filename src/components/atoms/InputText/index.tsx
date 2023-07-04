@@ -1,14 +1,14 @@
 import React from 'react';
 import {TextInputProps, View} from 'react-native';
 import {theme} from '../../../theme';
-import {Container, Error} from './styles';
+import {TextInput, Error, Container} from './styles';
 import {Paragraph} from '../Paragraph';
 
 export type InputProps = TextInputProps & {
   error: any;
   onChangeText: any;
   placeholder?: string;
-  touched?: any
+  touched?: any;
 };
 
 export default function InputText({
@@ -19,9 +19,10 @@ export default function InputText({
   ...rest
 }: InputProps) {
   return (
-    <View>
+    <Container
+    {...rest}>
       <Paragraph size={13}>{placeholder}</Paragraph>
-      <Container
+      <TextInput
         error={error}
         selectionColor={theme.input.colorPlaceholder}
         cursorColor={theme.input.colorPlaceholder}
@@ -32,6 +33,6 @@ export default function InputText({
         {...rest}
       />
       <Error>{error?.message}</Error>
-    </View>
+    </Container>
   );
 }

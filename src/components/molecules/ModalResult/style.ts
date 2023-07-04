@@ -48,7 +48,7 @@ export const BodyContainer = styled.View`
 
 export const ProductContainer = styled.View`
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-around;
 `;
 
 export const ButtonFooter = styled.View`

@@ -2,9 +2,8 @@ import {
   Button,
   ButtonContainer,
   ConatinerValue,
+  ContainerVolume,
   FormContainer,
-  FormContent,
-  Line,
 } from './styles';
 import {useFormik} from 'formik';
 import {View} from 'react-native';
@@ -78,13 +77,13 @@ export const FormVolume = (): JSX.Element => {
   return (
     <View style={theme.box}>
       <FormContainer>
-        <FormContent>
-          <InputText
-            placeholder="Nome"
-            error={errors.name_product_1}
-            onChangeText={handleChange('name_product_1')}
-            touched={touched.name_product_1}
-          />
+        <InputText
+          placeholder="Nome"
+          error={errors.name_product_1}
+          onChangeText={handleChange('name_product_1')}
+          touched={touched.name_product_1}
+        />
+        <ConatinerValue>
           <InputText
             placeholder="Preço"
             error={errors.price_product_1}
@@ -92,8 +91,9 @@ export const FormVolume = (): JSX.Element => {
             touched={touched.price_product_1}
             keyboardType="numeric"
           />
-          <ConatinerValue>
+          <ContainerVolume>
             <InputText
+              style={{paddingRight: 13}}
               placeholder="Volume"
               error={errors.volume_product_1}
               keyboardType="numeric"
@@ -108,47 +108,14 @@ export const FormVolume = (): JSX.Element => {
               onBlur={handleBlur('volume_1')}
               touched={touched.volume_1}
               error={errors.volume_1}
+              placeholder='Medida'
             />
-          </ConatinerValue>
-        </FormContent>
-        <Line />
-        <FormContent>
-          <InputText
-            placeholder="Nome"
-            error={errors.name_product_2}
-            onChangeText={handleChange('name_product_2')}
-            touched={touched.name_product_2}
-          />
-          <InputText
-            placeholder="Preço"
-            error={errors.price_product_2}
-            onChangeText={handleChange('price_product_2')}
-            touched={touched.price_product_2}
-            keyboardType="numeric"
-          />
-          <ConatinerValue>
-            <InputText
-              placeholder="Volume"
-              error={errors.volume_product_2}
-              onChangeText={handleChange('volume_product_2')}
-              touched={touched.volume_product_2}
-              keyboardType="numeric"
-            />
-            <InputPicker
-              items={volume}
-              value={values.volume_2}
-              onChangeText={handleChange('volume_2')}
-              touched={touched.volume_2}
-              onChange={() => handleSubmit()}
-              onBlur={handleBlur('volume_2')}
-              error={errors.volume_2}
-            />
-          </ConatinerValue>
-        </FormContent>
+          </ContainerVolume>
+        </ConatinerValue>
       </FormContainer>
       <ButtonContainer>
         <Button onPress={() => handleSubmit()}>
-          <Paragraph color="#ffff">Calcular</Paragraph>
+          <Paragraph color="#ffff">Adicionar</Paragraph>
         </Button>
       </ButtonContainer>
       <ModalResult

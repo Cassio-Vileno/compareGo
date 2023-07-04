@@ -22,7 +22,7 @@ export const theme = {
     colorPlaceholder: '#AEAEAE',
     textColor: '#000',
     size: 16,
-    width: 90,
+    width: 100,
     height: 50,
     backgroundColor: '#F2F2F2',
     borderRadius: 10,
@@ -31,7 +31,6 @@ export const theme = {
       default: '#F2F2F2'
     },
     errorColor: '#b50000'
-
   },
   box: {
     backgroundColor: '#fff',

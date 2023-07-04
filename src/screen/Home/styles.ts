@@ -21,12 +21,6 @@ export const ImgLogo = styled.Image`
   height: 58px;
 `;
 
-export const IconContainer = styled.View`
-  width: 50px;
-  height: 58px;
-  justify-content: center;
-`;
-
 export const ImgBanner = styled.Image`
   width: 160px;
   height: 100%;
@@ -38,7 +32,7 @@ export const Body = styled.ScrollView`
 `;
 
 export const Separation = styled.View`
-  height: 50px;
+  height: 5px;
 `;
 
 export const BannerContent = styled.View`
@@ -67,8 +61,8 @@ export const FormContent = styled.View`
 `;
 
 export const LabelContent = styled.View`
-  height: 20px;
-  margin-top: 20px;
+  height: 10px;
+  align-items: flex-end;
 `;
 
 export const ConatinerValue = styled.View`
@@ -97,3 +91,16 @@ export const Button = styled.TouchableOpacity`
   border-radius: 10px;
 `;
 
+export const ContainerList = styled.View`
+  flex: 1;
+  border-radius: 20px 20px 0 0;
+  align-items: center;
+  background-color: #00BFA5;
+`;
+
+export const ProductList = styled.ScrollView`
+  width: 99%;
+  height: 10px;
+  border-radius: 10px;
+  background-color: white;
+`;

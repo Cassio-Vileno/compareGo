@@ -8,3 +8,7 @@ export const peso = [
   {label: 'kg', value: 'kg'},
   {label: 'g', value: 'g'},
 ];
+export const measurements = [
+  {label: 'Calcular por Volume', value: 'volume'},
+  {label: 'Calcular por Massa', value: 'peso'},
+]
