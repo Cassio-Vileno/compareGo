@@ -108,14 +108,16 @@ export const FormVolume = (): JSX.Element => {
               onBlur={handleBlur('volume_1')}
               touched={touched.volume_1}
               error={errors.volume_1}
-              placeholder='Medida'
+              placeholder="Medida"
             />
           </ContainerVolume>
         </ConatinerValue>
       </FormContainer>
       <ButtonContainer>
         <Button onPress={() => handleSubmit()}>
-          <Paragraph color="#ffff">Adicionar</Paragraph>
+          <Paragraph size={20} color="#ffff">
+            Adicionar
+          </Paragraph>
         </Button>
       </ButtonContainer>
       <ModalResult

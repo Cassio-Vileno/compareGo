@@ -1,6 +1,8 @@
 import {
   BannerContent,
   Body,
+  Button,
+  ButtonContainer,
   Container,
   ContainerList,
   Header,
@@ -16,12 +18,13 @@ import {Paragraph} from '../../components/atoms/Paragraph';
 import {FormMassa} from '../../components/organims/FormMassa';
 import {Icon} from '../../components/atoms/Icon';
 import InputPicker from '../../components/atoms/InputPicker';
-import { useState } from 'react';
-import { measurements } from '../../utils/medidas';
-import { FormVolume } from '../../components/organims/FormVolume';
+import {useState} from 'react';
+import {measurements} from '../../utils/medidas';
+import {FormVolume} from '../../components/organims/FormVolume';
+import ItemList from '../../components/molecules/ItemList';
 
 export const Home = (): JSX.Element => {
-  const [measure, setMeasure] = useState()
+  const [measure, setMeasure] = useState();
 
   return (
     <Container>
@@ -41,27 +44,29 @@ export const Home = (): JSX.Element => {
           <ImgBanner source={Banner} />
         </BannerContent>
         <InputPicker
-              style={{width: 210}}
-              items={measurements}
-              value={measure}
-              onChangeText={setMeasure}
-              onChange={(e: any) => setMeasure(e)}
-            />
-        <LabelContent>
-        </LabelContent>
-        { measure  !== 'volume' ? (
-            <FormVolume />
-          ) : (
-            <FormMassa/>
-        )}
-        <Separation/>
+          style={{width: 210}}
+          items={measurements}
+          value={measure}
+          onChangeText={setMeasure}
+          onChange={(e: any) => setMeasure(e)}
+        />
+        <LabelContent></LabelContent>
+        {measure === 'volume' ? <FormVolume /> : <FormMassa />}
+        <Separation />
       </Body>
-        <ContainerList>
-            <Paragraph style={{paddingBottom: 10, paddingTop: 10}} size={20} >Lista de itens</Paragraph>
-          <ProductList>
-            <Separation />
-          </ProductList>
-        </ContainerList>
+      <ContainerList>
+        <Paragraph style={{paddingBottom: 10, paddingTop: 10}} size={20}>
+          Lista de itens
+        </Paragraph>
+        <ProductList>
+          <ItemList />
+        </ProductList>
+      </ContainerList>
+          <ButtonContainer>
+            <Button>
+              <Paragraph color='#fff' size={20}>Calcular</Paragraph>
+            </Button>
+          </ButtonContainer>
     </Container>
   );
 };

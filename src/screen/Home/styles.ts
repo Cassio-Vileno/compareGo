@@ -45,40 +45,15 @@ export const BannerContent = styled.View`
   margin-bottom: 13px;
 `;
 
-export const FormContainer = styled.View`
-  width: 100%;
-  height: 280px;
-  border-radius: 15px;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-`;
-
-export const FormContent = styled.View`
-  height: 100%;
-  width: 50%;
-  padding: 18px 0 0 17px;
-`;
-
 export const LabelContent = styled.View`
   height: 10px;
   align-items: flex-end;
 `;
 
-export const ConatinerValue = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const Line = styled.View`
-  width: 1px;
-  background-color: #C2BDBD;
-  height: 60%;
-`;
-
 export const ButtonContainer = styled.View`
   width: 100%;
-  height: 60px;
+  height: 90px;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -99,8 +74,10 @@ export const ContainerList = styled.View`
 `;
 
 export const ProductList = styled.ScrollView`
-  width: 99%;
+  width: 100%;
   height: 10px;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
+  padding-left: 10px;
+  padding-right: 10px;
   background-color: white;
 `;

@@ -120,7 +120,7 @@ export const FormMassa = (): JSX.Element => {
       </FormContainer>
       <ButtonContainer>
         <Button onPress={() => handleSubmit()}>
-          <Paragraph color="#ffff">Adicionar</Paragraph>
+          <Paragraph size={20} color="#ffff">Adicionar</Paragraph>
         </Button>
       </ButtonContainer>
       <ModalResult
