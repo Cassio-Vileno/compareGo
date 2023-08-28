@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { theme } from '../../../theme';
+import { Normalize } from '../../../utils/normalize';
 
 
 export const Container = styled.View`
@@ -31,25 +32,19 @@ export const Close = styled.TouchableOpacity`
 export const Body = styled.View`
   width: 100%;
   align-items: center;
-  padding: 14px 14px;
+  padding: 14px 24px;
   position: relative;
 `;
 
 export const Header = styled.View`
   align-self: flex-start;
-  padding: 0px 10px;
 `;
 
 export const BodyContainer = styled.View`
   align-items: flex-start;
-  justify-content: center;
-  flex-direction: row;
+  width: 100%;
 `;
 
-export const ProductContainer = styled.View`
-  align-items: flex-start;
-  justify-content: space-around;
-`;
 
 export const ButtonFooter = styled.View`
   margin-top: 10%;
@@ -57,18 +52,8 @@ export const ButtonFooter = styled.View`
   width: 120px;
 `;
 
-export const IconContainer = styled.View`
-  align-self: center;
-  margin-right: 15px;
-  margin-left: 15px;
-`;
-
-export const ContainerText = styled.View`
-  flex-direction: row;
-`;
-
 export const Button = styled.TouchableOpacity`
-  height: 50px;
+  height:  ${Normalize(40)}px;
   width: 100%;
   background-color: #009688;
   justify-content: center;

@@ -1,8 +1,9 @@
 import styled from 'styled-components/native';
+import { Normalize } from '../../../utils/normalize';
 
 export const FormContainer = styled.View`
   width: 100%;
-  height: 155px;
+  height: ${Normalize(140)}px;
   border-radius: 15px;
   padding: 18px 10px 0 17px;
 `;
@@ -24,13 +25,13 @@ export const ContainerVolume = styled.View`
 
 export const ButtonContainer = styled.View`
   width: 100%;
-  height: 60px;
+  height: ${Normalize(40)}px;
   align-items: center;
-  padding-top: 5px;
+  justify-content: flex-start;
 `;
 
 export const Button = styled.TouchableOpacity`
-  height: 45px;
+  height: ${Normalize(35)}px;
   width: 50%;
   background-color: #009688;
   justify-content: center;

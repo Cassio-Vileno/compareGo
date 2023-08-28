@@ -23,7 +23,7 @@ export const theme = {
     textColor: '#000',
     size: 16,
     width: 100,
-    height: 50,
+    height: 40,
     backgroundColor: '#F2F2F2',
     borderRadius: 10,
     borderColor: {
@@ -40,5 +40,6 @@ export const theme = {
     shadowOpacity: 0.8,
     shadowRadius: 4,
     elevation: 5,
+    margin: 13
   }
 }

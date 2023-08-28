@@ -31,7 +31,6 @@ export default function FormFieldSelect({
 
   return (
     <Container error={error} touched={touched} {...rest}>
-      <Paragraph size={13}>{rest.placeholder}</Paragraph>
       <Picker
         selectedValue={selectedItem}
         onValueChange={(itemValue, itemIndex) => {
