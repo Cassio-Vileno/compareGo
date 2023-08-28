@@ -1,17 +1,45 @@
+import { dataTypes } from "../screen/Home";
 import { ruleOfThree } from "./ruleOfThree"
-import { massaConverter } from "./massaConverter"
 
-export const calculeMassa = (data: any) => {
+
+export const massaConverter = (
+  value: number,
+  fromUnit: string,
+  toUnit: string): number => {
+  if (fromUnit === 'kg' && toUnit === 'g') {
+    return value * 1000;
+  } else if (fromUnit === 'g' && toUnit === 'g') {
+    return value;
+  } else {
+    throw new Error('Conversão de massa não suportada.');
+  }
+}
+
+export const calculeMassa = async (data: dataTypes[]) => {
   let values = data
-  values = { ...values, price_product_1: data.price_product_1.replace(/,/g, '.') }
-  values = { ...values, price_product_2: data.price_product_2.replace(/,/g, '.') }
-
-  if (values.massa_1 == 'l') {
-    values = { ...values, massa_product_1: massaConverter(data.massa_product_1, data.massa_1, data.massa_2) }
+  let bestProduct: any = {
+    id: '',
+    price_100_measure: 0,
+    amount_convert: 0,
+    name: '',
+    price: 0,
+    amount: 0,
+    medida: '',
+  };
+  try {
+    for (let i = 0; i <= values.length - 1; i++) {
+      values[i] = { ...values[i], price: values[i].price.replace(/,/g, '.') }
+      values[i] = { ...values[i], amount_convert: massaConverter(values[i].amount, values[i].medida, 'g') }
+      values[i] = { ...values[i], price_100_measure: ruleOfThree(values[i].price, values[i].amount_convert) }
+      if (!bestProduct.price_100_measure) {
+        bestProduct = values[i]
+      }
+      if (values[i].price_100_measure <= bestProduct.price_100_measure) {
+        bestProduct = values[i]
+      }
+    }
+  } catch (error) {
+    console.log(error)
   }
-  if (values.massa_2 == 'l') {
-    values = { ...values, massa_product_2: massaConverter(data.massa_product_2, data.massa_2, data.massa_1) }
-  }
-  const res = ruleOfThree(values.massa_product_1, values.massa_product_2, values.price_product_1, values.price_product_2)
-  return res
+  return { values, bestProduct }
 }

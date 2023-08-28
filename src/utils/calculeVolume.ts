@@ -1,17 +1,44 @@
+import { dataTypes } from "../screen/Home";
 import { ruleOfThree } from "./ruleOfThree"
-import { volumeConverter } from "./volumeConverter"
 
-export const calculeVolume = (data: any) => {
+export const volumeConverter = (
+  value: number,
+  fromUnit: string,
+  toUnit: string): number => {
+  if (fromUnit === 'l' && toUnit === 'ml') {
+    return value * 1000;
+  } else if (fromUnit === 'ml' && toUnit === 'ml') {
+    return value;
+  } else {
+    throw new Error('Conversão de volume não suportada.');
+  }
+}
+
+export const calculeVolume = async (data: dataTypes[]) => {
   let values = data
-  values = { ...values, price_product_1: data.price_product_1.replace(/,/g, '.') }
-  values = { ...values, price_product_2: data.price_product_2.replace(/,/g, '.') }
-
-  if (values.volume_1 == 'l') {
-    values = { ...values, volume_product_1: volumeConverter(data.volume_product_1, data.volume_1, data.volume_2) }
+  let bestProduct: any = {
+    id: '',
+    price_100_measure: 0,
+    amount_convert: 0,
+    name: '',
+    price: 0,
+    amount: 0,
+    medida: '',
+  };
+  try {
+    for (let i = 0; i <= values.length - 1; i++) {
+      values[i] = { ...values[i], price: values[i].price.replace(/,/g, '.') }
+      values[i] = { ...values[i], amount_convert: volumeConverter(values[i].amount, values[i].medida, 'ml') }
+      values[i] = { ...values[i], price_100_measure: ruleOfThree(values[i].price, values[i].amount_convert) }
+      if (!bestProduct.price_100_measure) {
+        bestProduct = values[i]
+      }
+      if (values[i].price_100_measure <= bestProduct.price_100_measure) {
+        bestProduct = values[i]
+      }
+    }
+  } catch (error) {
+    console.log(error)
   }
-  if (values.volume_2 == 'l') {
-    values = { ...values, volume_product_2: volumeConverter(data.volume_product_2, data.volume_2, data.volume_1) }
-  }
-  const res = ruleOfThree(values.volume_product_1, values.volume_product_2, values.price_product_1, values.price_product_2)
-  return res
+  return { values, bestProduct }
 }

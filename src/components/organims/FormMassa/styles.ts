@@ -1,43 +1,40 @@
 import styled from 'styled-components/native';
+import { Normalize } from '../../../utils/normalize';
 
 export const FormContainer = styled.View`
   width: 100%;
-  height: 280px;
+  height: ${Normalize(140)}px;
   border-radius: 15px;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-`;
-
-export const FormContent = styled.View`
-  height: 100%;
-  width: 50%;
-  padding: 18px 0 0 17px;
+  padding: 18px 10px 0 17px;
 `;
 
 export const ConatinerValue = styled.View`
+  width: 100%;
   flex-direction: row;
+  padding-right: 10%;
   align-items: center;
+  justify-content: space-between;
 `;
 
-export const Line = styled.View`
-  width: 1px;
-  background-color: #C2BDBD;
-  height: 60%;
+export const ContainerVolume = styled.View`
+  flex-direction: row;
+  width: 100%;
+  padding-left: 20px;
+  align-items: center;
 `;
 
 export const ButtonContainer = styled.View`
   width: 100%;
-  height: 60px;
+  height: ${Normalize(40)}px;
   align-items: center;
+  justify-content: flex-start;
 `;
 
 export const Button = styled.TouchableOpacity`
-  height: 50px;
+  height: ${Normalize(35)}px;
   width: 50%;
   background-color: #009688;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
 `;
-

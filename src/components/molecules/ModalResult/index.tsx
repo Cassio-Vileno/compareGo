@@ -1,6 +1,9 @@
 import React from 'react';
 import {Modal, ModalProps} from 'react-native';
 
+import {theme} from '../../../theme';
+import {Icon} from '../../atoms/Icon';
+import {Paragraph} from '../../atoms/Paragraph';
 import {
   Body,
   BodyContainer,
@@ -8,15 +11,9 @@ import {
   ButtonFooter,
   Close,
   Container,
-  ContainerText,
   Header,
-  IconContainer,
   Overlay,
-  ProductContainer,
 } from './style';
-import {Paragraph} from '../../atoms/Paragraph';
-import {theme} from '../../../theme';
-import {Icon} from '../../atoms/Icon';
 
 type ModalResultProps = ModalProps & {
   specifications: any;
@@ -48,56 +45,32 @@ export default function ModalResult({
           </Close>
           <Body>
             <Header>
-              <Paragraph weight="bold" size={20}>
-                {title}
+              <Paragraph weight="bold" size={18}>
+                Produto mais barato
               </Paragraph>
             </Header>
             <BodyContainer>
-              <ProductContainer>
-                <Paragraph style={{paddingBottom: 10}} weight="bold" size={19}>{specifications.title_1}</Paragraph>
-                <ContainerText>
-                  <Paragraph size={16}>Valor:</Paragraph>
-                  <Paragraph size={16}>R${specifications.price_1}</Paragraph>
-                </ContainerText>
-                <Paragraph size={16}>
-                  {specifications.medida_product_1}
-                  {specifications.medida_1}
-                </Paragraph>
-                <ContainerText>
-                  <Paragraph size={16}>{specifications.textPrice} </Paragraph>
-                  <Paragraph size={16}>
-                    R${specifications.price_100_product_1}
-                  </Paragraph>
-                </ContainerText>
-              </ProductContainer>
-              <IconContainer>
-                <Icon
-                  name="x"
-                  size={theme.icon.size}
-                  color={theme.color.secondary}
-                />
-              </IconContainer>
-              <ProductContainer>
-                <Paragraph style={{paddingBottom: 10}} weight="bold" size={19}>{specifications.title_2}</Paragraph>
-                <ContainerText>
-                  <Paragraph size={16}>Valor:</Paragraph>
-                  <Paragraph size={16}>R${specifications.price_2}</Paragraph>
-                </ContainerText>
-                <Paragraph size={16}>
-                  {specifications.medida_product_2}
-                  {specifications.medida_2}
-                </Paragraph>
-                <ContainerText>
-                  <Paragraph size={16}>{specifications.textPrice} </Paragraph>
-                  <Paragraph size={16}>
-                    R${specifications.price_100_product_2}
-                  </Paragraph>
-                </ContainerText>
-              </ProductContainer>
+              <Paragraph size={16}>
+                Nome: {specifications?.bestProduct?.name}
+              </Paragraph>
+              <Paragraph size={16}>
+                Quantidade:{specifications?.bestProduct?.amount}
+                {specifications?.bestProduct?.medida}
+              </Paragraph>
+              <Paragraph size={16}>
+                Valor: R${specifications?.bestProduct?.price}
+              </Paragraph>
+              <Paragraph size={16}>
+                Valor por 100
+                {specifications?.bestProduct?.medida == 'l' ? 'ml' : 'g'}: R$
+                {specifications?.bestProduct?.price_100_measure}
+              </Paragraph>
             </BodyContainer>
             <ButtonFooter>
               <Button onPress={() => close()}>
-                <Paragraph size={20}>Voltar</Paragraph>
+                <Paragraph color="#fff" size={20}>
+                  Salvar
+                </Paragraph>
               </Button>
             </ButtonFooter>
           </Body>

@@ -30,8 +30,7 @@ export default function FormFieldSelect({
   const [selectedItem, setSelectedItem] = useState<string | undefined>(value);
 
   return (
-    <Container>
-      <Paragraph size={13}>{rest.placeholder}</Paragraph>
+    <Container error={error} touched={touched} {...rest}>
       <Picker
         selectedValue={selectedItem}
         onValueChange={(itemValue, itemIndex) => {
